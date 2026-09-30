@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Programs — LBRCE International Cell</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --sky:#1597bb;--sky-lt:#2ebfdf;--sky-dk:#0d6e85;--sky-pale:#e8f8fc;--sky-pale2:#d0f0f8;
+  --white:#ffffff;--off:#f7fcfe;--orange:#f79236;--orange-lt:#fba856;
+  --dark:#0f2a33;--gray:#5a7a85;--border:#cce8f0;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Sora',sans-serif;color:var(--dark);background:var(--white);overflow-x:hidden;line-height:1.6;}
+.topbar{background:var(--sky-dk);padding:8px 0;font-size:.75rem;color:rgba(255,255,255,.8);}
+.topbar .inner{max-width:1240px;margin:auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.topbar a{color:rgba(255,255,255,.85);text-decoration:none;}
+.top-links{display:flex;gap:20px;}
+nav{background:var(--white);box-shadow:0 1px 0 var(--border);position:sticky;top:0;z-index:100;}
+nav.elevated{box-shadow:0 4px 24px rgba(21,151,187,.15);}
+.nav-inner{max-width:1240px;margin:auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between;}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.logo-mark{width:44px;height:44px;background:linear-gradient(135deg,var(--sky),var(--sky-lt));border-radius:12px;display:grid;place-items:center;flex-shrink:0;}
+.logo-mark svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
+.logo-words .top{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sky);line-height:1;}
+.logo-words .bottom{font-family:'Lora',serif;font-size:1rem;font-weight:600;color:var(--dark);line-height:1.2;margin-top:2px;}
+.nav-menu{display:flex;align-items:center;gap:2px;}
+.nav-menu a{text-decoration:none;font-size:.84rem;font-weight:500;color:var(--dark);padding:8px 14px;border-radius:8px;transition:all .2s;}
+.nav-menu a:hover,.nav-menu a.act{color:var(--sky);background:var(--sky-pale);}
+.nav-cta{background:var(--sky)!important;color:#fff!important;border-radius:10px!important;padding:9px 22px!important;font-weight:600!important;}
+
+/* HERO 
+.page-hero{background:linear-gradient(135deg,#1a0a28,#2a0d50,#1597bb);padding:96px 0 80px;position:relative;overflow:hidden;}
+.page-hero{
+    background: url('../bg14.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    padding:96px 0 80px;
+    position:relative;
+    overflow:hidden;
+}*/
+.page-hero{
+    background:
+        linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+        url('../bg14.png');
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    padding:96px 0 80px;
+    position:relative;
+    overflow:hidden;
+}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.05) 1px,transparent 1px);background-size:32px 32px;}
+.page-hero-inner{max-width:1240px;margin:auto;padding:0 24px;position:relative;z-index:2;}
+.page-hero .pill{display:inline-flex;align-items:center;background:rgba(21,151,187,.2);border:1px solid rgba(21,151,187,.4);color:var(--sky-lt);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 16px;border-radius:100px;margin-bottom:18px;}
+.page-hero h1{font-family:'Lora',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:700;color:#fff;line-height:1.15;margin-bottom:16px;}
+.page-hero h1 em{font-style:normal;color:var(--sky-lt);}
+.page-hero p{font-size:1rem;color:rgba(255,255,255,.65);max-width:560px;line-height:1.8;}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:.75rem;color:rgba(255,255,255,.45);margin-top:24px;}
+.breadcrumb a{color:rgba(255,255,255,.6);text-decoration:none;}
+.breadcrumb span{color:rgba(255,255,255,.25);}
+
+section{padding:80px 0;}
+.max{max-width:1240px;margin:auto;padding:0 24px;}
+.label{font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sky);margin-bottom:8px;}
+.heading{font-family:'Lora',serif;font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:700;color:var(--dark);line-height:1.2;}
+.heading span{color:var(--sky);}
+.sub-copy{font-size:.95rem;color:var(--gray);line-height:1.8;max-width:580px;margin-top:12px;}
+
+/* FEATURED PROGRAMS */
+.prog-featured{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:48px;}
+@media(max-width:768px){.prog-featured{grid-template-columns:1fr;}}
+.prog-hero-card{border-radius:22px;overflow:hidden;position:relative;min-height:320px;display:flex;align-items:flex-end;}
+.prog-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;}
+.prog-hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1) 0%,rgba(0,0,0,.75) 100%);}
+.prog-hero-content{position:relative;z-index:2;padding:28px;}
+.prog-hero-badge{display:inline-block;padding:5px 12px;border-radius:100px;font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px;}
+.badge-blue{background:var(--sky);color:#fff;}
+.badge-orange{background:var(--orange);color:#fff;}
+.prog-hero-card h3{font-family:'Lora',serif;font-size:1.4rem;color:#fff;font-weight:700;margin-bottom:6px;}
+.prog-hero-card p{font-size:.84rem;color:rgba(255,255,255,.75);line-height:1.7;margin-bottom:18px;}
+.btn-register-hero{display:inline-block;background:#fff;color:var(--sky-dk);font-weight:700;font-size:.86rem;padding:11px 24px;border-radius:10px;text-decoration:none;transition:all .2s;}
+.btn-register-hero:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.2);}
+.btn-register-hero.orange{background:var(--orange);color:#fff;}
+.btn-register-hero.orange:hover{background:var(--orange-lt);}
+
+/* PROGRAM GRID */
+.prog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin-top:48px;}
+.prog-card{background:var(--white);border-radius:20px;overflow:hidden;border:1.5px solid var(--border);transition:all .3s;position:relative;}
+.prog-card:hover{transform:translateY(-5px);box-shadow:0 14px 40px rgba(21,151,187,.14);border-color:rgba(21,151,187,.3);}
+.prog-thumb{height:180px;background-size:cover;background-position:center;position:relative;}
+.prog-badge{position:absolute;top:12px;left:12px;padding:5px 12px;border-radius:100px;font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;}
+.badge-green{background:#1a8c4e;color:#fff;}
+.badge-purple{background:#6c3fc5;color:#fff;}
+.prog-body{padding:22px;}
+.prog-body h3{font-family:'Lora',serif;font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:6px;}
+.prog-body p{font-size:.82rem;color:var(--gray);line-height:1.75;margin-bottom:14px;}
+.prog-meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
+.prog-meta-item{display:flex;align-items:center;gap:5px;font-size:.72rem;color:var(--sky-dk);font-weight:600;}
+.prog-features{list-style:none;margin-bottom:18px;}
+.prog-features li{font-size:.81rem;color:var(--gray);padding:4px 0;display:flex;align-items:center;gap:7px;}
+.prog-features li::before{content:'✓';color:var(--sky);font-weight:700;}
+.btn-register-prog{display:block;text-align:center;background:var(--sky);color:#fff;font-weight:700;font-size:.87rem;padding:11px;border-radius:10px;text-decoration:none;transition:all .2s;}
+.btn-register-prog:hover{background:var(--sky-lt);}
+
+/* HOW IT WORKS */
+.how-sec{background:var(--off);}
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-top:44px;}
+.step-card{text-align:center;padding:28px 20px;background:var(--white);border-radius:18px;border:1.5px solid var(--border);position:relative;}
+.step-num{width:48px;height:48px;background:linear-gradient(135deg,var(--sky),var(--sky-lt));border-radius:50%;display:grid;place-items:center;font-size:1.1rem;font-weight:800;color:#fff;margin:0 auto 14px;}
+.step-card h4{font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:6px;}
+.step-card p{font-size:.8rem;color:var(--gray);line-height:1.7;}
+
+/* CTA */
+.cta-strip{background:linear-gradient(135deg,var(--sky-dk),var(--sky),var(--sky-lt));padding:80px 0;text-align:center;}
+.cta-strip h2{font-family:'Lora',serif;font-size:clamp(1.8rem,3vw,2.6rem);color:#fff;font-weight:700;margin-bottom:12px;}
+.cta-strip p{color:rgba(255,255,255,.72);font-size:.95rem;max-width:480px;margin:0 auto 32px;}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn-white{background:#fff;color:var(--sky-dk);font-weight:700;font-size:.92rem;padding:13px 30px;border-radius:10px;text-decoration:none;display:inline-block;}
+.btn-outline-white{color:#fff;font-weight:600;font-size:.92rem;padding:13px 30px;border-radius:10px;border:1.5px solid rgba(255,255,255,.4);background:rgba(255,255,255,.08);text-decoration:none;display:inline-block;}
+
+footer{background:var(--dark);color:rgba(255,255,255,.6);}
+.footer-top{padding:64px 0 48px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;}}
+.footer-brand p{font-size:.84rem;line-height:1.8;margin-top:14px;max-width:270px;}
+.foot-logo{display:flex;align-items:center;gap:10px;}
+.foot-logo-icon{width:38px;height:38px;background:var(--sky);border-radius:9px;display:grid;place-items:center;}
+.foot-logo-icon svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:2.2;}
+.foot-logo-text{font-family:'Lora',serif;font-size:.9rem;font-weight:700;color:#fff;}
+.foot-col h5{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:16px;}
+.foot-col ul{list-style:none;}
+.foot-col ul li{margin-bottom:9px;}
+.foot-col ul li a{font-size:.82rem;color:rgba(255,255,255,.5);text-decoration:none;}
+.foot-col ul li a:hover{color:var(--sky-lt);}
+.socials{display:flex;gap:9px;margin-top:18px;}
+.socials a{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.06);display:grid;place-items:center;color:rgba(255,255,255,.5);text-decoration:none;font-size:.8rem;font-weight:700;}
+.socials a:hover{background:var(--sky);color:#fff;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding:20px 0;}
+.foot-bottom-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:.75rem;}
+.rev{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s;}
+.rev.vis{opacity:1;transform:translateY(0);}
+@media(max-width:600px){.nav-menu{display:none;}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="inner">
+  <span>🎓 Lakireddy Bali Reddy College of Engineering (LBRCE), Mylavaram, Andhra Pradesh</span>
+  <div class="top-links"><span>✉ <a href="mailto:international@lbrce.ac.in">international@lbrce.ac.in</a></span><span>📞 <a href="tel:+918645220002">+91 86452 20002</a></span></div>
+</div></div>
+
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-mark"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+      <div class="logo-words"><div class="top">LBRCE</div><div class="bottom">International Cell</div></div>
+    </a>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="programs.html" class="act">Programs</a>
+      <a href="test-prep.html">Test Prep</a>
+      <a href="about.html">About</a>
+      <a href="faq.html">FAQ</a>
+      <a href="register.html" class="nav-cta">Register Now</a>
+    </nav>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="pill">✦ &nbsp;Our Programs</div>
+    <h1>Every Path to a<br/><em>Global University</em></h1>
+    <p>From university shortlisting to visa approval — explore every program the LBRCE International Cell offers, all completely free for enrolled students.</p>
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Programs</span></div>
+  </div>
+</div>
+
+<!-- FEATURED PROGRAMS -->
+<section>
+  <div class="max">
+    <div class="label rev">Flagship Programs</div>
+    <h2 class="heading rev">Where Your Journey <span>Begins</span></h2>
+    <div class="prog-featured">
+      <!-- University Explore -->
+      <div class="prog-hero-card rev">
+        <div class="prog-hero-bg" style="background-image:url('../bg10.png');"></div>
+        <div class="prog-hero-overlay"></div>
+        <div class="prog-hero-content">
+          <span class="prog-hero-badge badge-blue">🌍 University Explore</span>
+          <h3>University Explore Program</h3>
+          <p>Personalised university shortlisting, profile evaluation, and application strategy — matched to your GPA, scores, and career goals across 40+ partner universities in 15+ countries.</p>
+          <a href="register.html?program=university-explore" class="btn-register-hero">Register for This Program →</a>
+        </div>
+      </div>
+      <!-- IELTS -->
+      <div class="prog-hero-card rev">
+        <div class="prog-hero-bg" style="background-image:url('../bg11.png');"></div>
+        <div class="prog-hero-overlay"></div>
+        <div class="prog-hero-content">
+          <span class="prog-hero-badge badge-orange">✏️ IELTS Free Coaching</span>
+          <h3>Free IELTS Coaching</h3>
+          <p>8-week, certified instructor-led coaching covering all four IELTS modules. Includes 12 full mock tests, one-on-one feedback, and a proven path to Band 7.0+ for LBRCE students.</p>
+          <a href="register.html?program=ielts" class="btn-register-hero orange">Register for IELTS →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALL PROGRAMS -->
+<section style="background:var(--off);padding-top:0;padding-bottom:80px;">
+  <div class="max">
+    <div class="label rev">All Programs</div>
+    <h2 class="heading rev">Every Service, <span>No Cost</span></h2>
+    <p class="sub-copy rev">All programs below are free and exclusively available to LBRCE students. Click "Register" on any card to enrol.</p>
+    <div class="prog-grid">
+
+      <div class="prog-card rev">
+        <div class="prog-thumb" style="background-image:url('../bg15.png');">
+          <span class="prog-badge badge-blue">Profile Building</span>
+        </div>
+        <div class="prog-body">
+          <h3>SOP & LOR Workshop</h3>
+          <p>Expert-guided workshops on writing powerful Statements of Purpose and securing strong Letters of Recommendation that stand out in competitive applicant pools.</p>
+          <div class="prog-meta"><span class="prog-meta-item">📅 4-week program</span><span class="prog-meta-item">🆓 Free</span></div>
+          <ul class="prog-features"><li>SOP structure & storytelling techniques</li><li>LOR guidance for professors & employers</li><li>Individual draft reviews & feedback</li></ul>
+          <a href="register.html?program=sop-lor" class="btn-register-prog">Register for SOP & LOR →</a>
+        </div>
+      </div>
+
+      <div class="prog-card rev">
+        <div class="prog-thumb" style="background-image:url('../bg16.png');">
+          <span class="prog-badge badge-orange">Visa Ready</span>
+        </div>
+        <div class="prog-body">
+          <h3>Visa Guidance Program</h3>
+          <p>End-to-end visa assistance for 12+ countries. Our specialists guide you through document preparation, financial affidavits, and mock visa interviews for a 98% success rate.</p>
+          <div class="prog-meta"><span class="prog-meta-item">📅 On-demand</span><span class="prog-meta-item">🆓 Free</span></div>
+          <ul class="prog-features"><li>Country-specific document checklists</li><li>Financial proof guidance</li><li>Mock visa interview practice</li></ul>
+          <a href="register.html?program=visa" class="btn-register-prog" style="background:var(--orange);">Register for Visa Help →</a>
+        </div>
+      </div>
+
+      <div class="prog-card rev">
+        <div class="prog-thumb" style="background-image:url('../bg17.png');">
+          <span class="prog-badge badge-green">Scholarships</span>
+        </div>
+        <div class="prog-body">
+          <h3>Scholarship Search & Apply</h3>
+          <p>Identify and apply for government scholarships (Fulbright, DAAD, Chevening), university grants, and research assistantships with expert mentorship throughout the process.</p>
+          <div class="prog-meta"><span class="prog-meta-item">📅 Ongoing</span><span class="prog-meta-item">🆓 Free</span></div>
+          <ul class="prog-features"><li>Personalised scholarship matching</li><li>Scholarship essay review & editing</li><li>Deadline tracking & reminders</li></ul>
+          <a href="register.html?program=scholarship" class="btn-register-prog" style="background:#1a8c4e;">Register for Scholarship →</a>
+        </div>
+      </div>
+
+      <div class="prog-card rev">
+        <div class="prog-thumb" style="background-image:url('../bg18.png');">
+          <span class="prog-badge badge-purple">Pre-Departure</span>
+        </div>
+        <div class="prog-body">
+          <h3>Pre-Departure Briefing</h3>
+          <p>Comprehensive orientation for students who have received their visa. Covers housing, banking, culture, academic expectations, and staying connected with the LBRCE alumni network.</p>
+          <div class="prog-meta"><span class="prog-meta-item">📅 1-day session</span><span class="prog-meta-item">🆓 Free</span></div>
+          <ul class="prog-features"><li>Housing & rental market tips by country</li><li>International banking & currency guidance</li><li>Cultural integration & safety briefing</li></ul>
+          <a href="register.html?program=predeparture" class="btn-register-prog" style="background:#6c3fc5;">Register for Briefing →</a>
+        </div>
+      </div>
+
+      <div class="prog-card rev">
+        <div class="prog-thumb" style="background-image:url('../bg19.png');">
+          <span class="prog-badge badge-blue">Career</span>
+        </div>
+        <div class="prog-body">
+          <h3>International Career Counselling</h3>
+          <p>Explore career pathways, post-study work rights, OPT/PGWP options, and industry demand across countries before you choose your destination and program.</p>
+          <div class="prog-meta"><span class="prog-meta-item">📅 Flexible</span><span class="prog-meta-item">🆓 Free</span></div>
+          <ul class="prog-features"><li>Post-study work rights by country</li><li>Industry demand & salary benchmarks</li><li>LinkedIn & resume for global markets</li></ul>
+          <a href="register.html?program=career" class="btn-register-prog">Register for Career Guidance →</a>
+        </div>
+      </div>
+
+      <div class="prog-card rev">
+        <div class="prog-thumb" style="background-image:url('../bg20.png');">
+          <span class="prog-badge badge-orange">Mock Interview</span>
+        </div>
+        <div class="prog-body">
+          <h3>University Interview Prep</h3>
+          <p>Practice real university interview questions with our counsellors and get detailed feedback on communication, content, and confidence before your actual admission interviews.</p>
+          <div class="prog-meta"><span class="prog-meta-item">📅 2-week prep</span><span class="prog-meta-item">🆓 Free</span></div>
+          <ul class="prog-features"><li>University-specific question bank</li><li>Video mock interviews with feedback</li><li>Body language & communication coaching</li></ul>
+          <a href="register.html?program=mock-interview" class="btn-register-prog" style="background:var(--orange);">Register for Mock Interview →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-sec">
+  <div class="max">
+    <div class="label rev">How It Works</div>
+    <h2 class="heading rev">From Registration to <span>Abroad — In 6 Steps</span></h2>
+    <div class="steps-grid">
+      <div class="step-card rev"><div class="step-num">1</div><h4>Register Online</h4><p>Fill out the registration form with your details and choose your program of interest.</p></div>
+      <div class="step-card rev"><div class="step-num">2</div><h4>Profile Evaluation</h4><p>Our counsellor reviews your academic profile and schedules a personalised session.</p></div>
+      <div class="step-card rev"><div class="step-num">3</div><h4>University Shortlisting</h4><p>We identify the best-fit universities across your target country and budget.</p></div>
+      <div class="step-card rev"><div class="step-num">4</div><h4>Test Prep & SOP</h4><p>Join free IELTS/GRE coaching and polish your SOP and LOR with expert feedback.</p></div>
+      <div class="step-card rev"><div class="step-num">5</div><h4>Application & Visa</h4><p>We guide every step — from submitting applications to securing your student visa.</p></div>
+      <div class="step-card rev"><div class="step-num">6</div><h4>Fly & Succeed</h4><p>Attend our pre-departure briefing and join the global LBRCE alumni network!</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-strip">
+  <div class="max">
+    <h2>Find Your Program. Register Today.</h2>
+    <p>All programs are 100% free. Limited seats — register now to secure your spot in the next batch.</p>
+    <div class="cta-btns"><a href="register.html" class="btn-white">📋 Register Now</a><a href="faq.html" class="btn-outline-white">❓ Read FAQs</a></div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top"><div class="max"><div class="footer-grid">
+    <div class="footer-brand"><div class="foot-logo"><div class="foot-logo-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 014-10z"/></svg></div><div class="foot-logo-text">LBRCE International Cell</div></div><p>Empowering students with global education opportunities and end-to-end guidance.</p><div class="socials"><a href="#">in</a><a href="#">fb</a><a href="#">yt</a><a href="#">ig</a></div></div>
+    <div class="foot-col"><h5>Pages</h5><ul><li><a href="home.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="programs.html">Programs</a></li><li><a href="test-prep.html">Test Prep</a></li><li><a href="faq.html">FAQ</a></li></ul></div>
+    <div class="foot-col"><h5>Programs</h5><ul><li><a href="register.html?program=university-explore">University Explore</a></li><li><a href="register.html?program=ielts">IELTS Coaching</a></li><li><a href="register.html?program=visa">Visa Guidance</a></li><li><a href="register.html?program=scholarship">Scholarships</a></li></ul></div>
+    <div class="foot-col"><h5>Contact</h5><ul><li><a href="#">LBRCE Campus, Mylavaram</a></li><li><a href="tel:+918645220002">+91 86452 20002</a></li><li><a href="mailto:international@lbrce.ac.in">international@lbrce.ac.in</a></li></ul></div>
+  </div></div></div>
+  <div class="footer-bottom"><div class="max foot-bottom-inner"><span>© 2025 LBRCE International Cell. All rights reserved.</span><span>Lakireddy Bali Reddy College of Engineering, Mylavaram, AP</span></div></div>
+</footer>
+
+<script>
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => nav.classList.toggle('elevated', scrollY > 60));
+const revItems = document.querySelectorAll('.rev');
+const io = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){x.target.classList.add('vis');io.unobserve(x.target);}}),{threshold:0.1});
+revItems.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
